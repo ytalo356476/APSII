@@ -1,46 +1,49 @@
-public class TesteFuncionarios {
+public class Funcionario {
 
-    public static void main(String[] args) {
+    private String nome;
+    private String matricula;
+    private double salarioBase;
+    private String dataAdmissao;
 
-        Funcionario ana = new Funcionario(
-                "Ana Costa",
-                "F001",
-                2500,
-                "01/03/2020"
+    public Funcionario(String nome, String matricula,
+                       double salarioBase, String dataAdmissao) {
+        this.nome = nome;
+        this.matricula = matricula;
+        this.salarioBase = salarioBase;
+        this.dataAdmissao = dataAdmissao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public double getSalarioBase() {
+        return salarioBase;
+    }
+
+    public double calcularSalario() {
+        return salarioBase;
+    }
+
+    public double calcularDesconto() {
+        return salarioBase * 0.08;
+    }
+
+    @Override
+    public String toString() {
+        double liquido = calcularSalario() - calcularDesconto();
+
+        return String.format(
+                "%s [%s] - Salário: R$ %.2f | Desconto: R$ %.2f | Líquido: R$ %.2f",
+                nome,
+                matricula,
+                calcularSalario(),
+                calcularDesconto(),
+                liquido
         );
-
-        FuncionarioCLT bruno = new FuncionarioCLT(
-                "Bruno Reis",
-                "C001",
-                3000,
-                "10/06/2021",
-                220,
-                400
-        );
-
-        Gerente carla = new Gerente(
-                "Carla Mendes",
-                "G001",
-                8000,
-                "15/01/2018",
-                300,
-                500,
-                12,
-                0.20
-        );
-
-        Estagiario diego = new Estagiario(
-                "Diego Alves",
-                "E001",
-                0,
-                "05/08/2024",
-                1500,
-                20
-        );
-
-        System.out.println(ana);
-        System.out.println(bruno);
-        System.out.println(carla);
-        System.out.println(diego);
     }
 }
